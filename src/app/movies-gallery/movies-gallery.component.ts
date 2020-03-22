@@ -1,7 +1,6 @@
 import {Component, ComponentFactoryResolver, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Movies} from '../core/models/movies';
 import {MoviesGalleryService} from '../services/movies-gallery.service';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from './modal/modal.component';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -27,14 +26,14 @@ export class MoviesGalleryComponent implements OnInit {
         });
   }
 
-    showMore() {
-        this.modalRef = this.modalService.show(ModalComponent, {
-            initialState: {
-                title: 'Modal Title',
-                data: {}
-            }
-        });
-    }
+    // showMore() {
+    //     this.modalRef = this.modalService.show(ModalComponent, {
+    //         initialState: {
+    //             title: 'Modal Title',
+    //             data: {}
+    //         }
+    //     });
+    // }
 
 
     // showMore(movie: Movies) {
@@ -49,4 +48,12 @@ export class MoviesGalleryComponent implements OnInit {
     //
     // }
 
+    showMore(movie: Movies) {
+        this.modalRef = this.modalService.show(ModalComponent, {
+                    class: 'modal-lg',
+                    initialState: {
+                        movies: movie
+                    }
+                });
+    }
 }

@@ -27,13 +27,35 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
+        <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="imgModal" [src]="movies.img" alt="Card image">
+                    <div class="row" style="margin-top: 5px">
+                        <div class="col-6">
+                            <button class="btn btn-outline-warning star"><i class="fa fa-star-o"></i></button>
+                        </div>
+                        <div class="col-6">
+                            <p>{{movies.year}}</p>
+                        </div>
+                        <div style="margin-top: 10px" class="col-sm-6" *ngFor="let countOfGenre of movies.genres">
+                            <p>{{countOfGenre | titlecase}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <h2>{{movies.name}}</h2>
+                    <p>{{movies.description}}</p>
+                    <div style="margin-top: 10px">
+                        <p>{{'Director: ' + movies.director}}</p>
+                        <span>{{'Starring: ' + [movies.starring]}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="modal-header">
-    <h4 class="modal-title pull-left"> {{ title }} </h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    This is a modal.
-</div>
