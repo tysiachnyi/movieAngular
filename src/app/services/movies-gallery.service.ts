@@ -21,8 +21,8 @@ export class MoviesGalleryService {
           this.movies = response;
           console.log(this.localStorageData);
            // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < this.localStorageData.length; i++) {
-              this.addFav(this.localStorageData[i], true);
+          for (const i of this.localStorageData) {
+              this.addFav(i, true);
             }
      });
 
