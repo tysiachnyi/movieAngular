@@ -7,4 +7,5 @@ export interface Movies {
     genres: string[];
     director: string;
     starring: string[];
+    onFav?: boolean;
 }

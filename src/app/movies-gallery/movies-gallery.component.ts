@@ -10,50 +10,31 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./movies-gallery.component.scss']
 })
 export class MoviesGalleryComponent implements OnInit {
-  movies: Movies[] = [];
   modalRef: BsModalRef;
 
 
-  constructor(private moviesGalleryService: MoviesGalleryService,
+  constructor(public moviesGalleryService: MoviesGalleryService,
               private modalService: BsModalService) { }
 
 
   ngOnInit() {
-    this.moviesGalleryService.fetchMovies()
-        .subscribe(movies => {
-          this.movies = movies;
-          console.log(this.movies);
-        });
+    this.moviesGalleryService.fetchMovies();
   }
 
-    // showMore() {
-    //     this.modalRef = this.modalService.show(ModalComponent, {
-    //         initialState: {
-    //             title: 'Modal Title',
-    //             data: {}
-    //         }
-    //     });
-    // }
-
-
-    // showMore(movie: Movies) {
-    //     const modalFactory = this.resolver.resolveComponentFactory(ModalComponent);
-    //     this.refDir.containerRef.clear();
-    //
-    //     const component = this.refDir.containerRef.createComponent(modalFactory);
-    //     component.instance.movies = movie;
-    //     component.instance.close.subscribe(() => {
-    //         this.refDir.containerRef.clear();
-    //     });
-    //
-    // }
-
     showMore(movie: Movies) {
-        this.modalRef = this.modalService.show(ModalComponent, {
+      this.modalRef = this.modalService.show(ModalComponent, {
                     class: 'modal-lg',
                     initialState: {
                         movies: movie
                     }
                 });
+    }
+
+    addFav(id: number) {
+      this.moviesGalleryService.addFav(id);
+    }
+
+    removeFav(id: number) {
+      this.moviesGalleryService.removeFav(id);
     }
 }

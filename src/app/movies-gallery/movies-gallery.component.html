@@ -3,9 +3,10 @@
         <div class="col-10">
             <h2 class="text-center">Movies Gallery</h2>
             <div class="row">
-                <div class="col-sm-3" *ngFor="let movie of this.movies" style="margin-top: 10px">
+                <div class="col-sm-3" *ngFor="let movie of this.moviesGalleryService.movies" style="margin-top: 10px">
                     <div class="card h-100">
-                        <button class="btn btn-warning star"><i class="fa fa-star-o"></i></button>
+                        <button class="btn btn-outline-warning star" *ngIf="!movie.onFav" (click)="addFav(movie.id)" ><i class="fa fa-star-o"></i></button>
+                        <button class="btn btn-warning star" *ngIf="movie.onFav" (click)="removeFav(movie.id)" ><i class="fa fa-star"></i></button>
                         <button class="btn" (click)="showMore(movie)"><img class="img" [src]="movie.img" alt="Card image"></button>
                         <div class="card-block">
                             <p class="card-text text-center">{{movie.name}}</p>

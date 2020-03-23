@@ -1,18 +1,22 @@
 <div class="container">
         <div class="col-12">
             <div class="row">
-                <div class="col-12">
-                    <table class="table table-borderless">
+                <div class="col-12" *ngIf="moviesGalleryService.likedMovies.length > 0">
+                    <table class="table">
                         <tbody>
-                        <tr>
-                            <th scope="row"><span class="btn btn-outline-dark" (click)="alert()">X</span></th>
-                            <th colspan="2">Larry the Bird</th>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="btn btn-outline-dark" (click)="alerta()">X</span></th>
-                            <th colspan="2">Larry the Bird</th>
+                        <tr *ngFor="let likedMovie of moviesGalleryService.likedMovies">
+                            <td scope="row">
+                                    <i [class]="favicon"
+                                       (click)="deleteFav(likedMovie.id)"
+                                       aria-hidden="true">
+                                    </i>
+                            </td>
+                            <td colspan="2">{{likedMovie.name}}</td>
                         </tr>
                     </table>
+                </div>
+                <div class="col-12" *ngIf="moviesGalleryService.likedMovies.length <= 0">
+                    <p>Click on star, and add you favorite movie</p>
                 </div>
             </div>
         </div>
