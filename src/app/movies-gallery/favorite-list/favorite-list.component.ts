@@ -17,14 +17,9 @@ export class FavoriteListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // if (this.authService.isAuth[0] === 'auth') {
-    //   console.log('nicceeee');
-    // }
+   
   }
 
-  changeStyle($event) {
-    this.favicon = $event.type === 'mouseover' ? 'fa fa-trash' : 'fa fa-trash-o';
-  }
 
   deleteFav(id: number) {
     this.moviesGalleryService.removeFav(id);
