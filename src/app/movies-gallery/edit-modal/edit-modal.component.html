@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <p>Current name: {{authService.userName}}</p>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="text" class="form-control" formControlName="name">
+        <button class="btn btn-primary" style="margin-top: 10px">Change name</button>
+    </form>
+</div>
+

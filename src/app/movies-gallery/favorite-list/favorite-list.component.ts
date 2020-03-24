@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MoviesGalleryService} from '../../services/movies-gallery.service';
-import {Movies} from '../../core/models/movies';
+import {Movies} from '../../shared/models/movies';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-favorite-list',
@@ -11,10 +12,14 @@ export class FavoriteListComponent implements OnInit {
   favMovie: Movies[] = [];
   favicon = 'fa fa-trash-o';
   constructor(
-      public moviesGalleryService: MoviesGalleryService
+      public moviesGalleryService: MoviesGalleryService,
+      public authService: AuthService
   ) { }
 
   ngOnInit() {
+    // if (this.authService.isAuth[0] === 'auth') {
+    //   console.log('nicceeee');
+    // }
   }
 
   changeStyle($event) {
